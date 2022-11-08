@@ -4,30 +4,32 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dato Guardado</title>
+    <title>Jugador Guardado</title>
     <link rel="stylesheet" href="css/bootstrap.css">
 </head>
 <body>
-    <?php include 'menu.php'; ?>
+    
 </body>
 </html>
 
 
-
-<?php    
+<?php
+    include 'menu.php';
     include 'conexion.php';
 
     $nombre = $_POST["nombre"];
-    $empresa_desarrolladora = $_POST["empresa_desarrolladora"];
-    $descripcion = $_POST["descripcion"];
-    $precio = $_POST["precio"];
-    $fecha_salida = $_POST["fecha_salida"];
+    $fecha_nacimiento = $_POST["fecha_nacimiento"];
+    $posicion = $_POST["posicion"];
+    $pais = $_POST["pais"];
+    $peso = $_POST["peso"];
+    $estatura = $_POST["estatura"];
 
-    $sql = "INSERT INTO juegos (nombre, empresa_desarrolladora, descripcion, precio, fecha_salida)". 
-    "VALUES ('".$nombre."', '".$empresa_desarrolladora."', '".$descripcion."', '".$precio."', '".$fecha_salida."')";
+    $sql = "INSERT INTO jugador(nombre, fecha_nacimiento, posicion, pais, peso, estatura)".
+    "VALUES ('".$nombre."', '".$fecha_nacimiento."', '".$posicion."', '".$pais."', '".$peso."', '".$estatura."')";
 
     if($conexion->query($sql) === TRUE){
-        echo "Registro guardado con Éxito <a href='consultarDatos.php'>Regresar</a>";
+        echo "<h1 style='text-align:center; font-size: 35px; margin-top: 30px;'>Registro guardado con Éxito <a href='consultarDatos.php'>Regresar</a></h1>";
+        echo "<center><img src='img/like.png'><center>";
     } else {
         echo "Error: ".$sql."<br>".$conexion->error."<br><br><a href='consultarDatos.php'>Regresar</a>";
     }
